@@ -1,0 +1,319 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);@import url(https://fonts.googleapis.com/css?family=Roboto);html,
+body,
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 16px;
+}
+
+html,
+body {
+  height: 100%;
+  text-align: center;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  padding: 2rem;
+  background: #f8f8f8;
+}
+
+h2 {
+  font-size: 26px;
+  line-height: 1;
+  color: #ad455b;
+  margin-bottom: 0;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  color: #5f6982;
+}
+
+a {
+  color: #3273dc;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+.uploader {
+  display: block;
+  clear: both;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+  height: 350px;
+}
+
+.uploader label {
+  float: left;
+  clear: both;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 7px;
+  border: 3px solid #eee;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.uploader label:hover {
+  border-color: #ad455b;
+}
+
+.uploader label.hover {
+  border: 3px solid #ad455b;
+  -webkit-box-shadow: inset 0 0 0 6px #eee;
+          box-shadow: inset 0 0 0 6px #eee;
+}
+
+.uploader label.hover #start i.fa {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  opacity: 0.3;
+}
+
+.uploader #start {
+  float: left;
+  clear: both;
+  width: 100%;
+}
+
+.uploader #start.hidden {
+  display: none;
+}
+
+.uploader #start i.fa {
+  font-size: 50px;
+  margin-bottom: 1rem;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.uploader #response {
+  float: left;
+  clear: both;
+  width: 100%;
+}
+
+.uploader #response.hidden {
+  display: none;
+}
+
+.uploader #response #messages {
+  margin-bottom: 0.5rem;
+}
+
+.uploader #file-image {
+  display: inline;
+  margin: 0 auto 0.5rem auto;
+  width: auto;
+  height: auto;
+  max-width: 180px;
+}
+
+.uploader #file-image.hidden {
+  display: none;
+}
+
+.uploader #notimage {
+  display: block;
+  float: left;
+  clear: both;
+  width: 100%;
+}
+
+.uploader #notimage.hidden {
+  display: none;
+}
+
+.uploader progress,
+.uploader .progress {
+  display: inline;
+  clear: both;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 180px;
+  height: 8px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #eee;
+  overflow: hidden;
+}
+
+.uploader .progress[value]::-webkit-progress-bar {
+  border-radius: 4px;
+  background-color: #eee;
+}
+
+.uploader .progress[value]::-webkit-progress-value {
+  background: -webkit-gradient(linear, left top, right top, from(#90394c), color-stop(50%, #ad455b));
+  background: linear-gradient(to right, #90394c 0%, #ad455b 50%);
+  border-radius: 4px;
+}
+
+.uploader .progress[value]::-moz-progress-bar {
+  background: linear-gradient(to right, #90394c 0%, #ad455b 50%);
+  border-radius: 4px;
+}
+
+.uploader input[type="file"] {
+  display: none;
+}
+
+.uploader div {
+  margin: 0 0 0.5rem 0;
+  color: #5f6982;
+}
+
+.uploader .btn {
+  display: inline-block;
+  margin: 0.5rem 0.5rem 1rem 0.5rem;
+  clear: both;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: initial;
+  border: none;
+  border-radius: 0.2rem;
+  outline: none;
+  padding: 0 1rem;
+  height: 36px;
+  line-height: 36px;
+  color: #fff;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #ad455b;
+  border-color: #ad455b;
+  cursor: pointer;
+}
+
+.uploader .submitBtn {
+  width: 100%;
+  padding: 0;
+  margin-left: 0;
+}
+
+.cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+  margin-top: -0.75rem;
+  width: 100%;
+}
+
+.card {
+  display: block;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+          box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  color: #4a4a4a;
+  max-width: 100%;
+  position: relative;
+  width: 20%;
+  margin: 0 1rem;
+}
+
+.card-image {
+  display: block;
+  position: relative;
+}
+
+.card-content {
+  background-color: transparent;
+  padding: 1.5rem;
+}
+
+.image {
+  display: block;
+  position: relative;
+  padding-top: 75%;
+}
+
+.image img {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+}
+
+.media {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+}
+
+.media:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.media-content {
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  text-align: left;
+}
+
+.title {
+  color: #363636;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.125;
+}
+
+.title.is-4 {
+  font-size: 1.5rem;
+}
+
+.title:not(.is-spaced) + .subtitle {
+  margin-top: -1.25rem;
+}
+
+.subtitle {
+  color: #4a4a4a;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.subtitle.is-6 {
+  font-size: 1rem;
+}
+
+.subtitle,
+.title {
+  word-break: break-word;
+}
+

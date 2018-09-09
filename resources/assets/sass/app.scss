@@ -1,0 +1,286 @@
+// Imports
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+// Vars and Reset
+$theme: #ad455b;
+$dark-text: #5f6982;
+
+html,
+body,
+* {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+html,
+body {
+    height: 100%;
+    text-align: center;
+}
+body {
+    font-family: "Roboto", sans-serif;
+    padding: 2rem;
+    background: #f8f8f8;
+}
+
+h2 {
+    font-size: 26px;
+    line-height: 1;
+    color: $theme;
+    margin-bottom: 0;
+}
+p {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    color: $dark-text;
+}
+a {
+    color: #3273dc;
+    cursor: pointer;
+    text-decoration: none;
+}
+img {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+}
+figure {
+    margin: 0;
+    padding: 0;
+}
+// Upload Demo
+//
+.uploader {
+    display: block;
+    clear: both;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+
+    label {
+        float: left;
+        clear: both;
+        width: 100%;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        background: #fff;
+        border-radius: 7px;
+        border: 3px solid #eee;
+        transition: all 0.2s ease;
+        user-select: none;
+
+        &:hover {
+            border-color: $theme;
+        }
+        &.hover {
+            border: 3px solid $theme;
+            box-shadow: inset 0 0 0 6px #eee;
+
+            #start {
+                i.fa {
+                    transform: scale(0.8);
+                    opacity: 0.3;
+                }
+            }
+        }
+    }
+
+    #start {
+        float: left;
+        clear: both;
+        width: 100%;
+        &.hidden {
+            display: none;
+        }
+        i.fa {
+            font-size: 50px;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+    #response {
+        float: left;
+        clear: both;
+        width: 100%;
+        &.hidden {
+            display: none;
+        }
+        #messages {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    #file-image {
+        display: inline;
+        margin: 0 auto 0.5rem auto;
+        width: auto;
+        height: auto;
+        max-width: 180px;
+        &.hidden {
+            display: none;
+        }
+    }
+
+    #notimage {
+        display: block;
+        float: left;
+        clear: both;
+        width: 100%;
+        &.hidden {
+            display: none;
+        }
+    }
+
+    progress,
+    .progress {
+        // appearance: none;
+        display: inline;
+        clear: both;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 180px;
+        height: 8px;
+        border: 0;
+        border-radius: 4px;
+        background-color: #eee;
+        overflow: hidden;
+    }
+
+    .progress[value]::-webkit-progress-bar {
+        border-radius: 4px;
+        background-color: #eee;
+    }
+
+    .progress[value]::-webkit-progress-value {
+        background: linear-gradient(
+            to right,
+            darken($theme, 8%) 0%,
+            $theme 50%
+        );
+        border-radius: 4px;
+    }
+    .progress[value]::-moz-progress-bar {
+        background: linear-gradient(
+            to right,
+            darken($theme, 8%) 0%,
+            $theme 50%
+        );
+        border-radius: 4px;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    div {
+        margin: 0 0 0.5rem 0;
+        color: $dark-text;
+    }
+    .btn {
+        display: inline-block;
+        margin: 0.5rem 0.5rem 1rem 0.5rem;
+        clear: both;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        text-transform: initial;
+        border: none;
+        border-radius: 0.2rem;
+        outline: none;
+        padding: 0 1rem;
+        height: 36px;
+        line-height: 36px;
+        color: #fff;
+        transition: all 0.2s ease-in-out;
+        box-sizing: border-box;
+        background: $theme;
+        border-color: $theme;
+        cursor: pointer;
+    }
+    .submitBtn {
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+    }
+}
+.cards {
+    display: flex;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    margin-top: -0.75rem;
+    width: 100%;
+}
+.card {
+    display: block;
+    background-color: #fff;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    color: #4a4a4a;
+    max-width: 100%;
+    position: relative;
+    width: 20%;
+    margin: 0 1rem;
+
+    &-image {
+        display: block;
+        position: relative;
+    }
+    &-content {
+        background-color: transparent;
+        padding: 1.5rem;
+    }
+}
+.image {
+    display: block;
+    position: relative;
+    padding-top: 75%;
+    img {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: block;
+    }
+}
+.media {
+    align-items: flex-start;
+    display: flex;
+    text-align: left;
+
+    &:not(:last-child) {
+        margin-bottom: 0.75rem;
+    }
+    &-content {
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-shrink: 1;
+        text-align: left;
+    }
+}
+.title {
+    color: #363636;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.125;
+    &.is-4 {
+        font-size: 1.5rem;
+    }
+    &:not(.is-spaced) + .subtitle {
+        margin-top: -1.25rem;
+    }
+}
+.subtitle {
+    color: #4a4a4a;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.25;
+    &.is-6 {
+        font-size: 1rem;
+    }
+}
+.subtitle,
+.title {
+    word-break: break-word;
+}
