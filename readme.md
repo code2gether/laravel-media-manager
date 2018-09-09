@@ -1,6 +1,6 @@
 # Laravel Media Manager - مشروع لادارة ملفات
 
-![Screenshot](screen-shot.png)
+![Screenshot](screenshot.png)
 
 -   [System Requirements](#system-requirements)
 -   [Installation](#installation)
