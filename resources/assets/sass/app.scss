@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 
 // Vars and Reset
-$theme: #ad455b;
+$theme: #3849ea;
 $dark-text: #5f6982;
 
 html,
@@ -59,8 +59,7 @@ figure {
     height: 350px;
 
     label {
-        float: left;
-        clear: both;
+        display: flex;
         width: 100%;
         padding: 2rem 1.5rem;
         text-align: center;
@@ -207,9 +206,7 @@ figure {
 }
 .cards {
     display: flex;
-    margin-left: -0.75rem;
-    margin-right: -0.75rem;
-    margin-top: -0.75rem;
+    flex-wrap: wrap;
     width: 100%;
 }
 .card {
@@ -220,7 +217,7 @@ figure {
     max-width: 100%;
     position: relative;
     width: 20%;
-    margin: 0 1rem;
+    margin: 0 1rem 1rem;
 
     &-image {
         display: block;

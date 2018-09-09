@@ -15,7 +15,7 @@
     </head>
     <body>
         <h2>Laravel Media Manager with Filesystem</h2>
-        <p class="lead">You can upload any types of files<b>JPG,PNG,DOC,MP4,MP3, etc</b></p>
+        <p class="lead">You can upload any types of files <b>JPG,PNG,DOC,MP4,MP3, etc</b></p>
 
         <!-- Upload  -->
         <form action="/files/add" method="POST" id="file-upload-form" class="uploader" enctype="multipart/form-data">
