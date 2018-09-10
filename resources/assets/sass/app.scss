@@ -21,6 +21,10 @@ body {
     font-family: "Roboto", sans-serif;
     padding: 2rem;
     background: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h2 {
@@ -48,8 +52,17 @@ figure {
     margin: 0;
     padding: 0;
 }
-// Upload Demo
-//
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Helpers
+.center {
+    justify-content: center;
+}
 .uploader {
     display: block;
     clear: both;
@@ -176,34 +189,35 @@ figure {
         margin: 0 0 0.5rem 0;
         color: $dark-text;
     }
-    .btn {
-        display: inline-block;
-        margin: 0.5rem 0.5rem 1rem 0.5rem;
-        clear: both;
-        font-family: inherit;
-        font-weight: 700;
-        font-size: 14px;
-        text-decoration: none;
-        text-transform: initial;
-        border: none;
-        border-radius: 0.2rem;
-        outline: none;
-        padding: 0 1rem;
-        height: 36px;
-        line-height: 36px;
-        color: #fff;
-        transition: all 0.2s ease-in-out;
-        box-sizing: border-box;
-        background: $theme;
-        border-color: $theme;
-        cursor: pointer;
-    }
-    .submitBtn {
-        width: 100%;
-        padding: 0;
-        margin-left: 0;
-    }
 }
+.btn {
+    display: inline-block;
+    margin: 0.5rem 0.5rem 1rem 0.5rem;
+    clear: both;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: initial;
+    border: none;
+    border-radius: 0.2rem;
+    outline: none;
+    padding: 0 1rem;
+    height: 36px;
+    line-height: 36px;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
+    background: $theme;
+    border-color: $theme;
+    cursor: pointer;
+}
+.submitBtn {
+    width: 100%;
+    padding: 0;
+    margin-left: 0;
+}
+
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -280,4 +294,47 @@ figure {
 .subtitle,
 .title {
     word-break: break-word;
+}
+
+.tabs {
+    align-items: stretch;
+    display: flex;
+    font-size: 1rem;
+    justify-content: space-between;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    user-select: none;
+    margin-bottom: 2rem;
+
+    ul {
+        align-items: center;
+        border-bottom-color: #dbdbdb;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        display: flex;
+        flex-grow: 1;
+        flex-shrink: 0;
+        justify-content: center;
+    }
+
+    li {
+        display: block;
+        &.is-active a {
+            border-bottom-color: #3273dc;
+            color: #3273dc;
+        }
+    }
+    a {
+        align-items: center;
+        border-bottom-color: #dbdbdb;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        color: #4a4a4a;
+        display: flex;
+        justify-content: center;
+        margin-bottom: -1px;
+        padding: 0.5em 1em;
+        vertical-align: top;
+    }
 }
