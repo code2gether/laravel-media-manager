@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\Storage;
 
 class FilesController extends Controller
 {
-
-    private $extensionsList = ['jpg', 'png', 'gif', 'jpeg'];
-
     /**
      * Display a listing of the Files.
      *
@@ -46,12 +43,13 @@ class FilesController extends Controller
 
         if ($request->hasFile('photo')) {
             // Get the file
-            $file = $request->file('photo');
+            $file      = $request->file('photo');
             // Extract all info needed for storing ... ;)
             $extension = $file->getClientOriginalExtension();
-            $name = preg_replace("/[\s_]/", "-", basename($file->getClientOriginalName(), "." . $extension));
-            $fileType = in_array($extension, $this->extensionsList) ? 'Images' : 'Others';
-            $fileSize = $file->getClientSize();
+            // Check Files Model for convertWhiteSpaceToHyphen, getFileType functions :)
+            $name      = $model->convertWhiteSpaceToHyphen($file->getClientOriginalName(), $extension);
+            $fileType  = $model->getFileType($extension);
+            $fileSize  = $file->getClientSize();
 
             if (Storage::putFileAs('/public/' . $fileType, $file, $name. '.' . $extension)) {
                 $file =  $model::create([
@@ -115,8 +113,8 @@ class FilesController extends Controller
 
             // Extract all info needed for storing ... ;)
             $extension = $uploadedFile->getClientOriginalExtension();
-            $name      = preg_replace("/[\s_]/", "-", basename($uploadedFile->getClientOriginalName(), "." . $extension));
-            $fileType  = in_array($extension, $this->extensionsList) ? 'Images': 'Others';
+            $name      = $mode->convertWhiteSpaceToHyphen($uploadedFile->getClientOriginalName(), $extension);
+            $fileType  = $mode->getFileType($extension);
             $fileSize  = $uploadedFile->getClientSize();
 
             // Create location for new uploaded file
