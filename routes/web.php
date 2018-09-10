@@ -11,5 +11,9 @@
 |
 */
 
-Route::get('/files', 'FilesController@index');
-Route::post('/files/add', 'FilesController@store');
+Route::get('files', 'FilesController@index')->name('files.index');
+Route::get('files/create', 'FilesController@create')->name('files.create');
+Route::post('files/store', 'FilesController@store')->name('files.store');
+Route::get('files/{id}/edit', 'FilesController@edit')->name('files.edit');
+Route::patch('files/{id}', 'FilesController@update')->name('files.update');
+Route::get('files/{id}', 'FilesController@show')->name('files.show');
