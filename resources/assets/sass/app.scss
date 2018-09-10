@@ -99,8 +99,6 @@ li {
     }
 
     #start {
-        float: left;
-        clear: both;
         width: 100%;
         &.hidden {
             display: none;
@@ -112,8 +110,6 @@ li {
         }
     }
     #response {
-        float: left;
-        clear: both;
         width: 100%;
         &.hidden {
             display: none;
@@ -126,8 +122,6 @@ li {
     #file-image {
         display: inline;
         margin: 0 auto 0.5rem auto;
-        width: auto;
-        height: auto;
         max-width: 180px;
         &.hidden {
             display: none;
@@ -136,8 +130,6 @@ li {
 
     #notimage {
         display: block;
-        float: left;
-        clear: both;
         width: 100%;
         &.hidden {
             display: none;
@@ -146,10 +138,8 @@ li {
 
     progress,
     .progress {
-        // appearance: none;
-        display: inline;
-        clear: both;
-        margin: 0 auto;
+        appearance: none;
+        display: inline-block;
         width: 100%;
         max-width: 180px;
         height: 8px;
