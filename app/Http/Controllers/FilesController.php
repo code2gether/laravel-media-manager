@@ -51,7 +51,9 @@ class FilesController extends Controller
             $fileType  = $model->getFileType($extension);
             $fileSize  = $file->getClientSize();
 
-            if (Storage::putFileAs('/public/' . $fileType, $file, $name. '.' . $extension)) {
+            $path = $file->storeAs('/public/'. $fileType, $name . '.' . $extension);
+
+            if ($path) {
                 $file =  $model::create([
                     'name'      => $name,
                     'type'      => $fileType,
@@ -60,6 +62,7 @@ class FilesController extends Controller
                 ]);
                 return redirect(route('files.index'));
             }
+            return back();
         }
     }
 
@@ -113,29 +116,25 @@ class FilesController extends Controller
 
             // Extract all info needed for storing ... ;)
             $extension = $uploadedFile->getClientOriginalExtension();
-            $name      = $mode->convertWhiteSpaceToHyphen($uploadedFile->getClientOriginalName(), $extension);
-            $fileType  = $mode->getFileType($extension);
+            $name      = $model->convertWhiteSpaceToHyphen($uploadedFile->getClientOriginalName(), $extension);
+            $fileType  = $model->getFileType($extension);
             $fileSize  = $uploadedFile->getClientSize();
 
-            // Create location for new uploaded file
-            $newFile = '/public/' . $fileType . '/' . $name . '.' . $extension;
+            // Delete old File
 
-            // Time to replace old file with new file
-            // 1- Check if exists
-            if (Storage::disk('local')->exists($oldFile)) {
-                 // 2- Update old file with new one ;)
-                if (Storage::disk('local')->move($oldFile, $newFile)) {
-                    // 3- Store file information into DB
+            $deletedPath = Storage::disk('local')->delete($oldFile);
+
+            // If old file deleted, store the new uploaded file ;)
+            if ($deletedPath) {
+                    Storage::putFileAs('/public/' . $fileType . '/', $uploadedFile , $name . '.' . $extension);
                     $file->name      = $name;
                     $file->type      = $fileType;
                     $file->extension = $extension;
-                    $file->size      = $extension;
+                    $file->size      = $fileSize;
                     $file->save();
-
-                    // Redirect back to index view
-                    return redirect(route('files.index'));
-                }
+                return redirect(route('files.index'));
             }
+            return back();
         }
     }
 

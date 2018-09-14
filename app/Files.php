@@ -21,9 +21,9 @@ class Files extends Model
     public function getFileType($extension)
     {
         if (in_array($extension, $this->imageExtensions)) {
-            return 'Image';
+            return 'images';
         }else {
-            return 'Others';
+            return 'others';
         }
     }
 
