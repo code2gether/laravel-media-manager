@@ -42,28 +42,33 @@ class FilesController extends Controller
         $model = new Files();
 
         if ($request->hasFile('photo')) {
+
             // Get the file
-            $file      = $request->file('photo');
-            // Extract all info needed for storing ... ;)
-            $extension = $file->getClientOriginalExtension();
-            // Check Files Model for convertWhiteSpaceToHyphen, getFileType functions :)
-            $name      = $model->convertWhiteSpaceToHyphen($file->getClientOriginalName(), $extension);
-            $fileType  = $model->getFileType($extension);
-            $fileSize  = $file->getClientSize();
+            $files      = $request->file('photo');
+            $filesPath = [];
 
-            $path = $file->storeAs('/public/'. $fileType, $name . '.' . $extension);
+            foreach ($files as $file) {
+                // Extract all info needed for storing ... ;)
+                $extension = $file->getClientOriginalExtension();
+                // Check Files Model for convertWhiteSpaceToHyphen, getFileType functions :)
+                $name      = $model->convertWhiteSpaceToHyphen($file->getClientOriginalName(), $extension);
+                $fileType  = $model->getFileType($extension);
+                $fileSize  = $file->getClientSize();
 
-            if ($path) {
+                $filesPath[] = $file->storeAs('/public/'. $fileType, $name . '.' . $extension);
+
                 $file =  $model::create([
                     'name'      => $name,
                     'type'      => $fileType,
                     "extension" => $extension,
                     "size"      => $fileSize
                 ]);
-                return redirect(route('files.index'));
             }
-            return back();
+
+            return redirect(route('files.index'));
         }
+
+        return back();
     }
 
     /**
@@ -112,30 +117,33 @@ class FilesController extends Controller
         if ($request->hasFile('photo')) {
 
             // Get the uploaded file
-            $uploadedFile = $request->file('photo');
+            $uploadedFiles = $request->file('photo');
+            $filesPath = [];
 
-            // Extract all info needed for storing ... ;)
-            $extension = $uploadedFile->getClientOriginalExtension();
-            $name      = $model->convertWhiteSpaceToHyphen($uploadedFile->getClientOriginalName(), $extension);
-            $fileType  = $model->getFileType($extension);
-            $fileSize  = $uploadedFile->getClientSize();
+            foreach ($uploadedFiles as $uploadedFile) {
 
-            // Delete old File
+                // Extract all info needed for storing ... ;)
+                $extension = $uploadedFile->getClientOriginalExtension();
+                $name      = $model->convertWhiteSpaceToHyphen($uploadedFile->getClientOriginalName(), $extension);
+                $fileType  = $model->getFileType($extension);
+                $fileSize  = $uploadedFile->getClientSize();
 
-            $deletedPath = Storage::disk('local')->delete($oldFile);
+                // Delete old File
 
-            // If old file deleted, store the new uploaded file ;)
-            if ($deletedPath) {
+                $deletedPath = Storage::disk('local')->delete($oldFile);
+
+                if ($deletedPath) {
                     Storage::putFileAs('/public/' . $fileType . '/', $uploadedFile , $name . '.' . $extension);
                     $file->name      = $name;
                     $file->type      = $fileType;
                     $file->extension = $extension;
                     $file->size      = $fileSize;
                     $file->save();
-                return redirect(route('files.index'));
+                    return redirect(route('files.index'));
+                }
             }
-            return back();
         }
+        return back();
     }
 
    /**

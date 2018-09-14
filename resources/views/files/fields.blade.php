@@ -1,4 +1,4 @@
-<input id="file-upload" type="file" name="photo" accept="image/*" />
+<input id="file-upload" type="file" name="photo[]" accept="image/*" multiple />
 
 <label for="file-upload" id="file-drag">
     <img id="file-image" src="#" alt="Preview" class="hidden">
